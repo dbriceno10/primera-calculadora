@@ -1,7 +1,3 @@
-// window.onload = () => {
-//     display = document.getElementById("display-calculator")
-// }
-
 const captureBtn1 = () => {
     const btn = document.getElementById("btn-1").value
     console.log(btn)
@@ -120,8 +116,3 @@ const captureBtnC = () => {
     console.log(btn)
     return btn
 }
-
-// captureBtn("btn-del")
-
-// display = document.getElementById("display-calculator")
-// console.log(display)
