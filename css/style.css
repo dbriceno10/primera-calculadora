@@ -1,6 +1,9 @@
 /*aspectos generales: bordes y color de fondo de calculadora*/
 .calculator { border: 3px blue ridge; width: 250px;text-align: center;
-    background-color: #f6f8d8; }
+    background-color: #f6f8d8;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 /*pantalla de visualización: bordes, posición, color de fondo, estilo letra.*/
 #display-calculator { width: 185px; border: 2px black solid; text-align: right; 

@@ -19,88 +19,40 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              <input type="button" value="DEL" id="btn-del" onclick="captureBtnDel()">
-              <input type="button" value="CE" id="btn-ce" onclick="captureBtnCe()">
-              <input type="button" value="C" id="btn-c" onclick="captureBtnC()">
-              <input type="button" value="/" id="btn-/" onclick="captureBtnDiv()">
+              <input type="button" value="DEL" id="btn-del" onclick="btnDel()">
+              <input type="button" value="CE" id="btn-ce" onclick="btnCe()">
+              <input type="button" value="C" id="btn-c" onclick="btnC()">
+              <input type="button" value="/" id="btn-/" onclick= "operation('/')">
             </div>
             <div class="col-md-3">
-              <input type="button" value="7" id="btn-7" onclick="captureBtn7()">
-              <input type="button" value="8" id="btn-8" onclick="captureBtn8()">
-              <input type="button" value="9" id="btn-9" onclick="captureBtn9()">
-              <input type="button" value="*" id="btn-*" onclick="captureBtnMult()">
+              <input type="button" value="7" id="btn-7" onclick="captureBtn('7')">
+              <input type="button" value="8" id="btn-8" onclick="captureBtn('8')">
+              <input type="button" value="9" id="btn-9" onclick="captureBtn('9')">
+              <input type="button" value="*" id="btn-*" onclick="operation('*')">
             </div>
             <div class="col-md-3">
-              <input type="button" value="4" id="btn-4" onclick="captureBtn4()">
-              <input type="button" value="5" id="btn-5" onclick="captureBtn5()">
-              <input type="button" value="6" id="btn-6" onclick="captureBtn6()">
-              <input type="button" value="-" id="btn--" onclick="captureBtnRest()">
+              <input type="button" value="4" id="btn-4" onclick="captureBtn('4')">
+              <input type="button" value="5" id="btn-5" onclick="captureBtn('5')">
+              <input type="button" value="6" id="btn-6" onclick="captureBtn('6')">
+              <input type="button" value="-" id="btn--" onclick="operation('-')">
             </div>
             <div class="col-md-3">
-              <input type="button" value="1" id="btn-1" onclick="captureBtn1()">
-              <input type="button" value="2" id="btn-2" onclick="captureBtn2()">
-              <input type="button" value="3" id="btn-3" onclick="captureBtn3()">
-              <input type="button" value="+" id="btn-+" onclick="captureBtnSum()">
+              <input type="button" value="1" id="btn-1" onclick="captureBtn('1')">
+              <input type="button" value="2" id="btn-2" onclick="captureBtn('2')">
+              <input type="button" value="3" id="btn-3" onclick="captureBtn('3')">
+              <input type="button" value="+" id="btn-+" onclick="operation('+')">
             </div>
             <div class="col-md-3">
-              <input type="button" value="+/-" id="btn-+/-" onclick="captureBtnSig()">
-              <input type="button" value="0" id="btn-0" onclick="captureBtn0()">
-              <input type="button" value="." id="btn-." onclick="captureBtnDecimal()">
-              <input type="button" value="=" id="btn-=" onclick="captureBtnEqual()">
+              <input type="button" value="+/-" id="btn-+/-" onclick="changeSig()">
+              <input type="button" value="0" id="btn-0" onclick="captureBtn('0')">
+              <input type="button" value="." id="btn-." onclick="captureBtn('.')">
+              <input type="button" value="=" id="btn-=" onclick="equal()">
             </div>
           </div>
-          <!--
-          <div class="row">
-            <div class="col-md-2">
-              <input type="button" value="+">
-              <input type="button" value="-">
-              <input type="button" value="*">
-              <input type="button" value="/">
-            </div>
-          </div> -->
         </form>
       </div>
     </div>
   </main>
-    <!-- <main class="container">
-        <div class="row">
-            <div >
-                <div class="col-4"><button>1</button></div>
-                <div class="col-4"><button>2</button></div>
-                <div class="col-4"><button>3</button></div>
-            </div>
-        
-        <div>
-            <div>
-                <div><button>4</button></div>
-                <div><button>5</button></div>
-                <div><button>6</button></div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div><button>7</button></div>
-                <div><button>8</button></div>
-                <div><button>9</button></div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div><button>0</button></div>
-                <div><button>+</button></div>
-                <div><button>-</button></div>
-            </div>
-        </div>
-        <div>
-            <div>
-                <div><button>*</button></div>
-                <div><button>/</button></div>
-                <div><button>=</button></div>
-            </div>
-        </div>
-    </div>
-    </main> -->
-    <script src="./js/btn.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
