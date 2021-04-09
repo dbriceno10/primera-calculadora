@@ -15,42 +15,43 @@
       <div>
         <form action="" name="calculator" id="calculator">
           <div>
-            <p id="display-calculator">000000000</p>
+            <p id="display-calculator">0</p>
           </div>
           <div class="row">
             <div class="col-md-3">
-              <input type="button" value="DEL">
-              <input type="button" value="CE">
-              <input type="button" value="C">
-              <input type="button" value="/">
+              <input type="button" value="DEL" id="btn-del" onclick="captureBtnDel()">
+              <input type="button" value="CE" id="btn-ce" onclick="captureBtnCe()">
+              <input type="button" value="C" id="btn-c" onclick="captureBtnC()">
+              <input type="button" value="/" id="btn-/" onclick="captureBtnDiv()">
             </div>
             <div class="col-md-3">
-              <input type="button" value="7">
-              <input type="button" value="8">
-              <input type="button" value="9">
-              <input type="button" value="*">
+              <input type="button" value="7" id="btn-7" onclick="captureBtn7()">
+              <input type="button" value="8" id="btn-8" onclick="captureBtn8()">
+              <input type="button" value="9" id="btn-9" onclick="captureBtn9()">
+              <input type="button" value="*" id="btn-*" onclick="captureBtnMult()">
             </div>
             <div class="col-md-3">
-              <input type="button" value="4">
-              <input type="button" value="5">
-              <input type="button" value="6">
-              <input type="button" value="-">
+              <input type="button" value="4" id="btn-4" onclick="captureBtn4()">
+              <input type="button" value="5" id="btn-5" onclick="captureBtn5()">
+              <input type="button" value="6" id="btn-6" onclick="captureBtn6()">
+              <input type="button" value="-" id="btn--" onclick="captureBtnRest()">
             </div>
             <div class="col-md-3">
-              <input type="button" value="1">
-              <input type="button" value="2">
-              <input type="button" value="3">
-              <input type="button" value="+">
+              <input type="button" value="1" id="btn-1" onclick="captureBtn1()">
+              <input type="button" value="2" id="btn-2" onclick="captureBtn2()">
+              <input type="button" value="3" id="btn-3" onclick="captureBtn3()">
+              <input type="button" value="+" id="btn-+" onclick="captureBtnSum()">
             </div>
             <div class="col-md-3">
-              <input type="button" value="+/-">
-              <input type="button" value="0">
-              <input type="button" value=".">
-              <input type="button" value="=">
+              <input type="button" value="+/-" id="btn-+/-" onclick="captureBtnSig()">
+              <input type="button" value="0" id="btn-0" onclick="captureBtn0()">
+              <input type="button" value="." id="btn-." onclick="captureBtnDecimal()">
+              <input type="button" value="=" id="btn-=" onclick="captureBtnEqual()">
             </div>
           </div>
+          <!--
           <div class="row">
-            <!-- <div class="col-md-2">
+            <div class="col-md-2">
               <input type="button" value="+">
               <input type="button" value="-">
               <input type="button" value="*">
