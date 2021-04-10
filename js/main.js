@@ -44,6 +44,12 @@ const operation = (operator) => {
     init = true //inicializar pantalla
 }
 const resolve = () => {
+    if (saveDisplay == ".") {
+        saveDisplay = 0
+    }
+    if (hiddenNumber == ".") {
+        hiddenNumber = 0
+    }
     let auxSolve //para guardar la operación
     let solve // para guardar la solución de la operación
     if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
