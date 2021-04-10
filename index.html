@@ -19,33 +19,41 @@
           </div>
           <div class="row">
             <div class="col-md-3">
-              <input type="button" value="DEL" id="btn-del" onclick="btnDel()">
-              <input type="button" value="CE" id="btn-ce" onclick="btnCe()">
-              <input type="button" value="C" id="btn-c" onclick="btnC()">
-              <input type="button" value="/" id="btn-/" onclick= "operation('/')">
+              <input type="button" class="largo" value="DEL" id="btn-del" onclick="btnDel()">
+              <input type="button" class="largo" value="CE" id="btn-ce" onclick="btnCe()">
+              <input type="button" class="largo" value="C" id="btn-c" onclick="btnC()">
+              
+            </div>
+            <div class="col-md-3">
+              
             </div>
             <div class="col-md-3">
               <input type="button" value="7" id="btn-7" onclick="captureBtn('7')">
               <input type="button" value="8" id="btn-8" onclick="captureBtn('8')">
               <input type="button" value="9" id="btn-9" onclick="captureBtn('9')">
-              <input type="button" value="*" id="btn-*" onclick="operation('*')">
+              <input type="button" value="/" id="btn-/" onclick= "operation('/')">
+              <input type="button" value="sqrt" id="sqrt" onclick="operation('sqrt'), resolve()" />
             </div>
             <div class="col-md-3">
               <input type="button" value="4" id="btn-4" onclick="captureBtn('4')">
               <input type="button" value="5" id="btn-5" onclick="captureBtn('5')">
               <input type="button" value="6" id="btn-6" onclick="captureBtn('6')">
-              <input type="button" value="-" id="btn--" onclick="operation('-')">
+              <input type="button" value="*" id="btn-*" onclick="operation('*')">
+              <input type="button" value="%" id="porcent" onclick="operation('porcent'), resolve()" />
             </div>
             <div class="col-md-3">
               <input type="button" value="1" id="btn-1" onclick="captureBtn('1')">
               <input type="button" value="2" id="btn-2" onclick="captureBtn('2')">
               <input type="button" value="3" id="btn-3" onclick="captureBtn('3')">
-              <input type="button" value="+" id="btn-+" onclick="operation('+')">
+              <input type="button" value="-" id="btn--" onclick="operation('-')">
+              <input type="button" value="1/x" id="inverse" onclick="operation('inverse'), resolve()" />
+              
             </div>
             <div class="col-md-3">
-              <input type="button" value="+/-" id="btn-+/-" onclick="changeSig()">
               <input type="button" value="0" id="btn-0" onclick="captureBtn('0')">
+              <input type="button" value="+/-" id="btn-+/-" onclick="changeSig()">
               <input type="button" value="." id="btn-." onclick="captureBtn('.')">
+              <input type="button" value="+" id="btn-+" onclick="operation('+')">
               <input type="button" value="=" id="btn-=" onclick="equal()">
             </div>
           </div>

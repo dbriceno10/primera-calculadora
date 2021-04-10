@@ -42,29 +42,41 @@ const operation = (operator) => {
     hiddenNumber = saveDisplay //Guardamos el primer número que se escribe o número en espera
     currentOp = operator //Guardamos el tipo de operación
     init = true //inicializar pantalla
+    float = false
 }
 const resolve = () => {
-    if (saveDisplay == ".") {
-        saveDisplay = 0
-    }
-    if (hiddenNumber == ".") {
-        hiddenNumber = 0
-    }
+    decimalToCero()
+    float = false
     let auxSolve //para guardar la operación
     let solve // para guardar la solución de la operación
-    if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
-        display.innerHTML= "INDETERMINATE"
-        setTimeout( () => {
-            display.innerHTML = "0"
-            saveDisplay = "0"
-            float = false
-            init = true 
-            hiddenNumber = 0 
+    //estas primeras funciones dependen de un solo número
+    if (currentOp == "sqrt") {
+        if (saveDisplay < 0) {
+            errorAction()
+        } else {
+            auxSolve = Math.sqrt(saveDisplay)
+            display.innerHTML= auxSolve
             currentOp = "false"
-            auxSolve = 0
-            solve = 0
-        }, 2000)
-    } else {
+            init = true
+            saveDisplay = auxSolve
+        }
+    } else if (currentOp == "porcent") {
+        auxSolve = saveDisplay / 100
+        display.innerHTML = auxSolve
+        currentOp = "false"
+        init = true
+        saveDisplay = auxSolve
+    } else if (currentOp == "inverse") {
+        if (saveDisplay == 0) {
+            errorAction()
+        } else {
+            auxSolve = 1 / saveDisplay
+            display.innerHTML = auxSolve
+            saveDisplay = auxSolve
+            init = true
+            currentOp = "false"
+        }
+    } else {//las siguientes dependen de dos números
         let n1 = parseFloat(hiddenNumber)
         let n2 = parseFloat(saveDisplay)
         if (currentOp == "+") {
@@ -89,17 +101,21 @@ const resolve = () => {
             currentOp = "false"
             init = true
         } else if (currentOp == "/") {
-            auxSolve = n1 / n2
-            solve = auxSolve.toString()
-            display.innerHTML= solve
-            saveDisplay = solve
-            currentOp = "false"
-            init = true
+            if ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0) {
+                errorAction()
+            } else {
+                auxSolve = n1 / n2
+                solve = auxSolve.toString()
+                display.innerHTML= solve
+                saveDisplay = solve
+                currentOp = "false"
+                init = true
+            }
         }
     }
 }
 const equal = () => {
-    float = false
+    // float = false
     if (currentOp == "false") {//no hay ninguna operación pendiente
         display.innerHTML = saveDisplay //nos limitamos a mostrar lo que hay en pantalla
     } else {
@@ -125,5 +141,29 @@ const btnC = () => {
     currentOp = "false"
     auxSolve = 0
     solve = 0
+    }, 1000)
+}
+
+const decimalToCero = () => {
+    //es para evitar obtener NaN cuando solo se le pase un puto decimal, hará que se interprete como un cero
+    if (saveDisplay == ".") {
+        saveDisplay = 0
+    }
+    if (hiddenNumber == ".") {
+        hiddenNumber = 0
+    }
+}
+
+const errorAction = () => {
+    display.innerHTML= "INDETERMINATE"
+    setTimeout( () => {
+        display.innerHTML = "0"
+        saveDisplay = "0"
+        float = false
+        init = true 
+        hiddenNumber = 0 
+        currentOp = "false"
+        auxSolve = 0
+        solve = 0
     }, 2000)
 }
