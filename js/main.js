@@ -50,6 +50,12 @@ const equal = () => {
         console.log("sin operaciones pendientes, estado: " + currentOp)
         display.innerHTML = saveDisplay //nos limitamos a mostrar lo que hay en pantalla
     } else {
+        if (saveDisplay == ".") {
+            saveDisplay = 0
+        }
+        if (hiddenNumber == ".") {
+            hiddenNumber = 0
+        }
         if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
             display.innerHTML= "INDETERMINATE"
             setTimeout( () => {
