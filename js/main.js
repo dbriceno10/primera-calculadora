@@ -1,3 +1,5 @@
+// const { parse } = require("@babel/core")
+
 window.onload = () => {
     display = document.getElementById("display-calculator")
     // document.onkeydown = keyboard
@@ -41,36 +43,67 @@ const operation = (operator) => {
     currentOp = operator //Guardamos el tipo de operación
     init = true //inicializar pantalla
 }
-
-const equal = () => {
-    float = false
+const resolve = () => {
     let auxSolve //para guardar la operación
     let solve // para guardar la solución de la operación
-    if (currentOp == "false") {//no hay ninguna operación pendiente
-        console.log("sin operaciones pendientes, estado: " + currentOp)
-        display.innerHTML = saveDisplay //nos limitamos a mostrar lo que hay en pantalla
+    if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
+        display.innerHTML= "INDETERMINATE"
+        setTimeout( () => {
+            display.innerHTML = "0"
+            saveDisplay = "0"
+            float = false
+            init = true 
+            hiddenNumber = 0 
+            currentOp = "false"
+            auxSolve = 0
+            solve = 0
+        }, 2000)
     } else {
-        if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
-            display.innerHTML= "INDETERMINATE"
-            setTimeout( () => {
-                display.innerHTML = "0"
-                saveDisplay = "0"
-                float = false
-                init = true 
-                hiddenNumber = 0 
-                currentOp = "false"
-                auxSolve = 0
-                solve = 0
-            }, 2000)
-        } else {
-            console.log("vamos a realizar la operación de " + currentOp)
-            auxSolve = hiddenNumber + currentOp + saveDisplay
-            console.log(auxSolve)
-            solve = eval(auxSolve)
+        let n1 = parseFloat(hiddenNumber)
+        let n2 = parseFloat(saveDisplay)
+        if (currentOp == "+") {
+            auxSolve = n1 + n2
+            solve = auxSolve.toString()
+            display.innerHTML= solve
+            saveDisplay = solve
+            currentOp = "false"
+            init = true
+        } else if (currentOp == "-") {
+            auxSolve = n1 - n2
+            solve = auxSolve.toString()
+            display.innerHTML= solve
+            saveDisplay = solve
+            currentOp = "false"
+            init = true
+        } else if (currentOp == "*") {
+            auxSolve = n1 * n2
+            solve = auxSolve.toString()
+            display.innerHTML= solve
+            saveDisplay = solve
+            currentOp = "false"
+            init = true
+        } else if (currentOp == "/") {
+            auxSolve = n1 / n2
+            solve = auxSolve.toString()
             display.innerHTML= solve
             saveDisplay = solve
             currentOp = "false"
             init = true
         }
+    }
+}
+const equal = () => {
+    float = false
+    if (currentOp == "false") {//no hay ninguna operación pendiente
+        display.innerHTML = saveDisplay //nos limitamos a mostrar lo que hay en pantalla
+    } else {
+        resolve()
+        // auxSolve = hiddenNumber + currentOp + saveDisplay
+        // console.log(auxSolve)
+        // solve = eval(auxSolve)
+        // display.innerHTML= solve
+        // saveDisplay = solve
+        // currentOp = "false"
+        // init = true
     }
 }
