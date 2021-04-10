@@ -23,7 +23,7 @@ const captureBtn = (num) => {//Captura el número pulsado
         console.log("segunda comprobación de float display en 0 " + float)
     
     } else if (num == "." && float == false) {
-        display.innerHTML+= "0."// escribimos cero segido del decimal
+        display.innerHTML+= "."// escribimos cero segido del decimal
         saveDisplay = num
         float = true
         console.log("segunda comprobación de float display no está en 0 " + float)
