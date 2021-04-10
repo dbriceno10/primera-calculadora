@@ -53,17 +53,7 @@ const equal = () => {
     } else {
         decimalToCero()
         if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
-            display.innerHTML= "INDETERMINATE"
-            setTimeout( () => {
-                display.innerHTML = "0"
-                saveDisplay = "0"
-                float = false
-                init = true 
-                hiddenNumber = 0 
-                currentOp = "false"
-                auxSolve = 0
-                solve = 0
-            }, 2000)
+            errorAction()
         } else {
             console.log("vamos a realizar la operación de " + currentOp)
             auxSolve = hiddenNumber + currentOp + saveDisplay
@@ -79,12 +69,16 @@ const equal = () => {
 }
 
 const sqrtBtn = () => {
-    decimalToCero()
-    saveDisplay = Math.sqrt(saveDisplay)
-    display.innerHTML = saveDisplay
-    currentOp = "false"
-    init = true
-    float = false
+    if (saveDisplay < 0) {
+        errorAction()
+    } else {
+        decimalToCero()
+        saveDisplay = Math.sqrt(saveDisplay)
+        display.innerHTML = saveDisplay
+        currentOp = "false"
+        init = true
+        float = false
+    }
 }
 
 const porcentBtn = () => {
@@ -99,17 +93,7 @@ const porcentBtn = () => {
 const inverseBtn = () => {
     decimalToCero()
     if ( saveDisplay == 0) {
-        display.innerHTML= "INDETERMINATE"
-        setTimeout( () => {
-            display.innerHTML = "0"
-            saveDisplay = "0"
-            float = false
-            init = true 
-            hiddenNumber = 0 
-            currentOp = "false"
-            auxSolve = 0
-            solve = 0
-        }, 2000)
+        errorAction()
     } else {
     //let aux = Number(saveDisplay)
     let aux = parseFloat(saveDisplay)
@@ -144,4 +128,18 @@ const decimalToCero = () => {
     if (hiddenNumber == ".") {
         hiddenNumber = 0
     }
+}
+
+const errorAction = () => {
+    display.innerHTML= "INDETERMINATE"
+    setTimeout( () => {
+        display.innerHTML = "0"
+        saveDisplay = "0"
+        float = false
+        init = true 
+        hiddenNumber = 0 
+        currentOp = "false"
+        auxSolve = 0
+        solve = 0
+    }, 2000)
 }
