@@ -40,22 +40,18 @@ const operation = (operator) => {
     hiddenNumber = saveDisplay //Guardamos el primer número que se escribe o número en espera
     currentOp = operator //Guardamos el tipo de operación
     init = true //inicializar pantalla
+    float = false //antes estaba en equal
 }
 
 const equal = () => {
-    float = false
+    // float = false
     let auxSolve //para guardar la operación
     let solve // para guardar la solución de la operación
     if (currentOp == "false") {//no hay ninguna operación pendiente
         console.log("sin operaciones pendientes, estado: " + currentOp)
         display.innerHTML = saveDisplay //nos limitamos a mostrar lo que hay en pantalla
     } else {
-        if (saveDisplay == ".") {
-            saveDisplay = 0
-        }
-        if (hiddenNumber == ".") {
-            hiddenNumber = 0
-        }
+        decimalToCero()
         if (currentOp == "/" && ((hiddenNumber == 0 && saveDisplay == 0) || saveDisplay == 0)) {
             display.innerHTML= "INDETERMINATE"
             setTimeout( () => {
@@ -77,10 +73,55 @@ const equal = () => {
             saveDisplay = solve
             currentOp = "false"
             init = true
+            float = false
         }
     }
 }
 
+const sqrtBtn = () => {
+    decimalToCero()
+    saveDisplay = Math.sqrt(saveDisplay)
+    display.innerHTML = saveDisplay
+    currentOp = "false"
+    init = true
+    float = false
+}
+
+const porcentBtn = () => {
+    decimalToCero()
+    saveDisplay = saveDisplay / 100
+    display.innerHTML = saveDisplay
+    equal()
+    init = true
+    float = false
+}
+
+const inverseBtn = () => {
+    decimalToCero()
+    if ( saveDisplay == 0) {
+        display.innerHTML= "INDETERMINATE"
+        setTimeout( () => {
+            display.innerHTML = "0"
+            saveDisplay = "0"
+            float = false
+            init = true 
+            hiddenNumber = 0 
+            currentOp = "false"
+            auxSolve = 0
+            solve = 0
+        }, 2000)
+    } else {
+    //let aux = Number(saveDisplay)
+    let aux = parseFloat(saveDisplay)
+    aux = (1 / aux)
+    //saveDisplay = String(aux)
+    saveDisplay = aux.toString()
+    display.innerHTML = saveDisplay
+    init = true
+    float = false
+    console.log(saveDisplay)
+    }
+}
 const btnC = () => {
     display.innerHTML= "CLEAR ALL"
     setTimeout( () => {
@@ -92,5 +133,15 @@ const btnC = () => {
     currentOp = "false"
     auxSolve = 0
     solve = 0
-    }, 2000)
+    }, 1000)
+}
+
+const decimalToCero = () => {
+    //es para evitar obtener NaN cuando solo se le pase un puto decimal, hará que se interprete como un cero
+    if (saveDisplay == ".") {
+        saveDisplay = 0
+    }
+    if (hiddenNumber == ".") {
+        hiddenNumber = 0
+    }
 }
