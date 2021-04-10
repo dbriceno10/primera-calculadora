@@ -107,3 +107,17 @@ const equal = () => {
         // init = true
     }
 }
+
+const btnC = () => {
+    display.innerHTML= "CLEAR ALL"
+    setTimeout( () => {
+    display.innerHTML = "0"
+    saveDisplay = "0"
+    float = false
+    init = true 
+    hiddenNumber = 0 
+    currentOp = "false"
+    auxSolve = 0
+    solve = 0
+    }, 2000)
+}
