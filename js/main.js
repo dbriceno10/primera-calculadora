@@ -103,12 +103,38 @@ const inverseBtn = () => {
     display.innerHTML = saveDisplay
     init = true
     float = false
-    console.log(saveDisplay)
     }
+}
+
+const changeSig = () => {
+    let aux = parseFloat(saveDisplay)
+    aux = -aux
+    saveDisplay = aux.toString()
+    display.innerHTML = saveDisplay
+    init = true
+}
+
+const btnDel = () => {//borramos solo el último número escrito
+    let figures = saveDisplay.length //figures => cifras (de números)
+    let del = saveDisplay.substr(figures - 1,figures)//información sobre el último caracter escrito
+    saveDisplay = saveDisplay.substr(0, figures - 1)//eliminar el último caracter
+    if (saveDisplay == "") {//si no quedan caracteres, hacer cero el display
+        saveDisplay = "0"
+    }
+    if (del == ".") {//si eliminamos el punto decimal, habilitar de nuevo el botón de decimal
+        float = false
+    }
+    display.innerHTML = saveDisplay 
+}
+
+const btnCe = () => {
+    display.innerHTML= "0"
+    float = false
+    saveDisplay = 0
 }
 const btnC = () => {
     display.innerHTML= "CLEAR ALL"
-    setTimeout( () => {
+    setTimeout(() => {
     display.innerHTML = "0"
     saveDisplay = "0"
     float = false
@@ -141,5 +167,5 @@ const errorAction = () => {
         currentOp = "false"
         auxSolve = 0
         solve = 0
-    }, 2000)
+    }, 1500)
 }
