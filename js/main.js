@@ -1,8 +1,6 @@
-// const { parse } = require("@babel/core")
-
 window.onload = () => {
     display = document.getElementById("display-calculator")
-    // document.onkeydown = keyboard
+    document.onkeydown = keyboard
 }
 
 let saveDisplay = "0" //Display inicial = 0
@@ -195,4 +193,43 @@ const errorAction = () => {
         auxSolve = 0
         solve = 0
     }, 1500)
+}
+
+const keyboard = (ev) => {
+    const eve = ev || window.event
+    let key = eve.keyCode //número de la tecla
+    if ((key > 47) && (key < 58)) { //teclas númericas del teclado alfamunérico
+        let code = key - 48 //buscar número a mostrar
+        code = code.toString()
+        captureBtn(code) //llamada a la tecla numérica correspondiente
+    }
+    if ((key > 95) && (key < 106)) { //Teclas del teclado númerico.
+        let code = key - 96 //buscar número a mostrar
+        code = code.toString()
+        captureBtn(code) //llamada a la tecla numérica correspondiente
+    }
+    if ((key == 110) || (key == 190)) {
+        captureBtn(".")
+    }
+    if (key == 106) {
+        operation("*")
+    }
+    if (key==109) {
+        operation('-')
+    } 
+    if (key==111) {
+        operation('/')
+    }
+    if (key==32 || key==13) {
+        equal()
+    }
+    if (key==46) {
+        btnC()
+    }
+    if (key==36) {
+        btnCe()
+    }
+    if (key==8) {
+        btnDel()
+    }
 }
