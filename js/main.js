@@ -60,7 +60,7 @@ const equal = () => {
             console.log(auxSolve)
             solve = eval(auxSolve)
             display.innerHTML= solve
-            saveDisplay = solve
+            saveDisplay = solve.toString()
             currentOp = "false"
             init = true
             float = false
@@ -73,7 +73,7 @@ const sqrtBtn = () => {
         errorAction()
     } else {
         decimalToCero()
-        saveDisplay = Math.sqrt(saveDisplay)
+        saveDisplay = Math.sqrt(saveDisplay).toString()
         display.innerHTML = saveDisplay
         currentOp = "false"
         init = true
@@ -83,7 +83,7 @@ const sqrtBtn = () => {
 
 const porcentBtn = () => {
     decimalToCero()
-    saveDisplay = saveDisplay / 100
+    saveDisplay = (saveDisplay / 100).toString()
     display.innerHTML = saveDisplay
     equal()
     init = true
