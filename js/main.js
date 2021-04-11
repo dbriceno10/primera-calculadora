@@ -61,21 +61,27 @@ const resolve = () => {
             saveDisplay = auxSolve
         }
     } else if (currentOp == "porcent") {
-        auxSolve = saveDisplay / 100
-        display.innerHTML = auxSolve
+        solve = saveDisplay / 100
+        display.innerHTML = solve
         currentOp = "false"
         init = true
-        saveDisplay = auxSolve
+        saveDisplay = solve
     } else if (currentOp == "inverse") {
         if (saveDisplay == 0) {
             errorAction()
         } else {
-            auxSolve = 1 / saveDisplay
-            display.innerHTML = auxSolve
-            saveDisplay = auxSolve
+            solve = 1 / saveDisplay
+            display.innerHTML = solve
+            saveDisplay = solve
             init = true
             currentOp = "false"
         }
+    } else if (currentOp == "signe") {
+        solve = saveDisplay * (-1)
+        display.innerHTML = solve
+        saveDisplay = solve
+        currentOp = "false"
+        init = true
     } else {//las siguientes dependen de dos números
         let n1 = parseFloat(hiddenNumber)
         let n2 = parseFloat(saveDisplay)
@@ -130,6 +136,27 @@ const equal = () => {
     }
 }
 
+const btnDel = () => {//borramos solo el último número escrito
+    console.log("antes de borrar " + saveDisplay)
+    let figures = saveDisplay.length //figures => cifras (de números)
+    let del = saveDisplay.substring(figures - 1,figures)//información sobre el último caracter escrito
+    saveDisplay = saveDisplay.substring(0, figures - 1)//eliminar el último caracter
+    if (saveDisplay == "") {//si no quedan caracteres, hacer cero el display
+        saveDisplay = "0"
+    }
+    if (del == ".") {//si eliminamos el punto decimal, habilitar de nuevo el botón de decimal
+        float = false
+    }
+    display.innerHTML = saveDisplay 
+    console.log("despues de borrrar" + saveDisplay)
+}
+
+const btnCe = () => {
+    display.innerHTML= "0"
+    float = false
+    saveDisplay = 0
+}
+
 const btnC = () => {
     display.innerHTML= "CLEAR ALL"
     setTimeout( () => {
@@ -165,5 +192,5 @@ const errorAction = () => {
         currentOp = "false"
         auxSolve = 0
         solve = 0
-    }, 2000)
+    }, 1500)
 }
