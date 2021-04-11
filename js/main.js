@@ -54,32 +54,36 @@ const resolve = () => {
         if (saveDisplay < 0) {
             errorAction()
         } else {
-            auxSolve = Math.sqrt(saveDisplay)
-            display.innerHTML= auxSolve
+            auxSolve = parseFloat(saveDisplay)
+            solve = Math.sqrt(auxSolve)
+            display.innerHTML= solve
             currentOp = "false"
             init = true
-            saveDisplay = auxSolve
+            saveDisplay = solve.toString()
         }
     } else if (currentOp == "porcent") {
-        solve = saveDisplay / 100
+        auxSolve = parseFloat(saveDisplay)
+        solve = auxSolve / 100
         display.innerHTML = solve
         currentOp = "false"
         init = true
-        saveDisplay = solve
+        saveDisplay = solve.toString()
     } else if (currentOp == "inverse") {
         if (saveDisplay == 0) {
             errorAction()
         } else {
-            solve = 1 / saveDisplay
+            auxSolve = parseFloat(saveDisplay)
+            solve = 1 / auxSolve
             display.innerHTML = solve
-            saveDisplay = solve
+            saveDisplay = solve.toString()
             init = true
             currentOp = "false"
         }
     } else if (currentOp == "signe") {
-        solve = saveDisplay * (-1)
+        auxSolve = parseFloat(saveDisplay)
+        solve = auxSolve * (-1)
         display.innerHTML = solve
-        saveDisplay = solve
+        saveDisplay = solve.toString()
         currentOp = "false"
         init = true
     } else {//las siguientes dependen de dos números
@@ -137,7 +141,6 @@ const equal = () => {
 }
 
 const btnDel = () => {//borramos solo el último número escrito
-    console.log("antes de borrar " + saveDisplay)
     let figures = saveDisplay.length //figures => cifras (de números)
     let del = saveDisplay.substring(figures - 1,figures)//información sobre el último caracter escrito
     saveDisplay = saveDisplay.substring(0, figures - 1)//eliminar el último caracter
@@ -147,8 +150,7 @@ const btnDel = () => {//borramos solo el último número escrito
     if (del == ".") {//si eliminamos el punto decimal, habilitar de nuevo el botón de decimal
         float = false
     }
-    display.innerHTML = saveDisplay 
-    console.log("despues de borrrar" + saveDisplay)
+    display.innerHTML = saveDisplay
 }
 
 const btnCe = () => {
